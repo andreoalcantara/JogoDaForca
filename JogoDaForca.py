@@ -8,7 +8,7 @@ def rand_word():
     f = f.split(',')
     posi = random.randint(0,len(f)-1)
     print(f[posi])
-    return f[posi]
+    return (f[posi])
 
 tabuleiro = ['''
 
@@ -80,6 +80,7 @@ class Hangman:
 
     # Método para tentativa de letra
     def guess(self, letter):
+        letter = letter.lower()
         if letter in self.word and letter not in self.right_letters:
             self.right_letters.append(letter)
         elif letter not in self.word and letter not in self.missed_letters:
@@ -103,7 +104,7 @@ class Hangman:
             if letter not in self.right_letters:
                 aux += '_'
             else: aux += letter
-            return aux
+        return aux
 
     # Método para checar o status do game e imprimir o tabuleiro na tela
     def print_game_status(self):
@@ -134,9 +135,13 @@ def main():
 
     # De acordo com o status, imprime mensagem na tela para o usuário
     if game.hangman_won():
-        print('\nVocê venceu!!')
+        print(25*'-=')
+        print(20*" "+'Você venceu!!')
+        print(25 * '-=')
     else:
-        print('\nVocê perdeu!!.')
+        print(25 * '-=')
+        print(20*" "+'Você perdeu!!.')
+        print(25 * '-=')
         print('A palavra era ' + game.word)
 
 
